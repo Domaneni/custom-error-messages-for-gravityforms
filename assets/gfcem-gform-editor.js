@@ -1,5 +1,6 @@
 fieldSettings.text += ", .gfcemAllowed_field_setting";
 fieldSettings.email += ", .gfcemAllowed_field_setting";
+fieldSettings.phone += ", .gfcemAllowed_field_setting";
 //binding to the load field settings event to initialize the checkbox
 jQuery(document).on("gform_load_field_settings", function(event, field, form){
     jQuery( '#field_gfcemAllowed' ).prop( 'checked', Boolean( rgar( field, 'gfcemAllowed' ) ) );

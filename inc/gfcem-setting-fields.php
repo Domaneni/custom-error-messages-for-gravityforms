@@ -12,7 +12,6 @@ add_action('gform_field_advanced_settings', function($placement, $form_id) {
             <label for="field_gfcemAllowed" class="inline"><?php esc_html_e( 'Allow custom error messages', 'gfcem' ) ?></label>
             <br/>
             <div id="field_gfcem_container" style="display:none; padding-top:10px;">
-                <!-- content dynamically created from js.php -->
             </div>
         </li>
         <?php
