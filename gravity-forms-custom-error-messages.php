@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: Gravity Forms - Custom Error Messages
- * Plugin URI: https://easyschoolregistration.com/
- * Description: Discounts module for Easy School Registration system
+ * Plugin URI: https://domaneni.cz/gfcem
+ * Description: Adds custom error messages to GravityForms inputs
  * Version: 1.2.4
  * Author: Zbyněk Nedoma
- * Author URI: https://easyschoolregistration.com/
+ * Author URI: https://domaneni.cz/
  * License: A "Slug" license name e.g. GPL12
- * Plugin Slug: esrd
+ * Plugin Slug: gfcem
  */
 
 

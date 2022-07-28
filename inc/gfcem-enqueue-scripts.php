@@ -5,5 +5,5 @@ if (!defined('ABSPATH')) {
 }
 
 add_action('gform_editor_js', function () {
-    wp_enqueue_script('atech_gform_editor_js', GFCEM_PLUGIN_URL . '/assets/atech-gform-editor.js', ['jquery'], GFCEM_VERSION);
+    wp_enqueue_script('atech_gform_editor_js', GFCEM_PLUGIN_URL . '/assets/gfcem-gform-editor.js', ['jquery'], GFCEM_VERSION);
 });
