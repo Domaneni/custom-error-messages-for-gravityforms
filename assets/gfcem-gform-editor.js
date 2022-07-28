@@ -7,24 +7,24 @@ jQuery(document).on("gform_load_field_settings", function(event, field, form){
     GFCEMCreateInputs(field);
     GFCEMToggleInputs(true);
 
-    jQuery( '#field_gfcem_message_required' ).val( rgar( field, 'inputGFCEMMessageRequired' ));
+    jQuery('#field_gfcem_message_required').val(rgar(field, 'inputGFCEMMessageRequired'));
+    jQuery('#field_gfcem_message_valid_email').val(rgar(field, 'inputGFCEMMessageValidEmail'));
+    jQuery('#field_gfcem_message_unique').val(rgar(field, 'inputGFCEMMessageUnique'));
 });
 
 jQuery('#field_gfcem_container')
-    .on('input propertychange change', '#field_gfcem_message_required', function(){
-        GFCEMSetInput(this.value);
+    .on('input propertychange change', '.gfcem_input', function(){
+        GFCEMSetInput(this.value, jQuery(this).data('key'));
     });
 
-
-function GFCEMSetInput(value, inputId){
+function GFCEMSetInput(value, key){
     var field = GetSelectedField();
 
-    if(value)
+    if(value) {
         value = value.trim();
-
-    if(!inputId){
-        field["inputGFCEMMessageRequired"] = value;
     }
+
+    field[key] = value;
 }
 
 
@@ -46,8 +46,16 @@ function GFCEMCreateInputs(field) {
     inputs = !legacy ? field['inputs'] : null;
 
     if (!inputs || GetInputType(field) === "checkbox") {
-        field_str = "<label for='field_gfcem_message_required' class='inline'>Required error message&nbsp;</label>";
-        field_str += "<input type='text' id='field_gfcem_message_required' />";
+        field_str = "<div class='gfcem-input-row'><label for='field_gfcem_message_required' class='inline'>Required error message&nbsp;</label>";
+        field_str += "<input type='text' id='field_gfcem_message_required' class='gfcem_input' data-key='inputGFCEMMessageRequired' /></div>";
+
+        if ('email' === field['type']) {
+            field_str += "<div class='gfcem-input-row'><label for='field_gfcem_message_valid_email' class='inline'>Valid email message&nbsp;</label>";
+            field_str += "<input type='text' id='field_gfcem_message_valid_email' class='gfcem_input' data-key='inputGFCEMMessageValidEmail' /></div>";
+        }
+
+        field_str += "<div class='gfcem-input-row'><label for='field_gfcem_message_unique' class='inline'>Unique error message&nbsp;</label>";
+        field_str += "<input type='text' id='field_gfcem_message_unique' class='gfcem_input' data-key='inputGFCEMMessageUnique' /></div>";
     }
 
     jQuery("#field_gfcem_container").html(field_str);
