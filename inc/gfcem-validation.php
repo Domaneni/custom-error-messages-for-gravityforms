@@ -18,6 +18,7 @@ add_filter('gform_field_validation', function ($result, $value, $form, $field) {
         $result['message'] = $field->inputGFCEMMessageValidEmail;
         return $result;
     }
+
     return $result;
 }, 10, 4);
 

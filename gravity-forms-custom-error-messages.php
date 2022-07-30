@@ -110,8 +110,7 @@ function GFCEM() {
 	return GravityFormsCustomErrorMessages::instance();
 }
 
-// Get ESR Running.
-
+// Get GFCEM Running.
 if (class_exists('GravityFormsCustomErrorMessages')) {
     GFCEM();
 }
