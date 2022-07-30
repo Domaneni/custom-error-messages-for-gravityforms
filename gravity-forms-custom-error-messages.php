@@ -44,6 +44,7 @@ if (!class_exists('GravityFormsCustomErrorMessages')) {
 				self::$instance = new GravityFormsCustomErrorMessages;
 				self::$instance->setup_constants();
 				self::$instance->includes();
+                self::$instance->support();
 			}
 
 			return self::$instance;
@@ -86,6 +87,7 @@ if (!class_exists('GravityFormsCustomErrorMessages')) {
 			}
 
 			define('GFCEM_PLUGIN_PATH', dirname(__FILE__));
+			define('GFCEM_PLUGIN_BASENAME', plugin_basename(__FILE__));
 			define('GFCEM_PLUGIN_URL', plugin_dir_url(__FILE__));
 			define('GFCEM_PLUGIN_DIR', plugin_dir_path(__FILE__));
 		}
@@ -103,6 +105,15 @@ if (!class_exists('GravityFormsCustomErrorMessages')) {
 			require_once GFCEM_PLUGIN_PATH . '/inc/gfcem-validation.php';
 		}
 
+        private function support() {
+            add_filter('plugin_action_links_' . GFCEM_PLUGIN_BASENAME, function  ($actions) {
+                $custom_links = [
+                    'support' => '<a href="https://ko-fi.com/domaneni" target="_blank">Support</a>',
+                ];
+
+                return array_merge( $actions, $custom_links );
+            }, 10, 1);
+        }
 	}
 }
 
