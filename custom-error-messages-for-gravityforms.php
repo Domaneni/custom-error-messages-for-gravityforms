@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: GravityForms - Custom Error Messages
+ * Plugin Name: Custom Error Messages for GravityForms
  * Plugin URI: https://domaneni.cz/gfcem
  * Description: Adds custom error messages to GravityForms inputs
  * Version: 1.0.0

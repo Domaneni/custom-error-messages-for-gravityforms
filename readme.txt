@@ -1,4 +1,4 @@
-=== GravityForms - Custom Error Messages ===
+=== Custom Error Messages for GravityForms ===
 Contributors: domaneni
 Donate link: https://ko-fi.com/domaneni
 Tags: gravityforms, gravity forms, custom, error, error message
@@ -21,7 +21,7 @@ This plugin allows you to set custom error messages for GravityForms inputs. We 
 From your WordPress dashboard
 
 1. **Visit** Plugins > Add New
-2. **Search** for "GravityForms - Custom Error Messages"
+2. **Search** for "Custom Error Messages for GravityForms"
 3. **Activate** Custom Error Messages from your Plugins page
 
 == Frequently Asked Questions ==
