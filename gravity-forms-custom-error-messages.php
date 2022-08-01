@@ -4,7 +4,7 @@
  * Plugin URI: https://domaneni.cz/gfcem
  * Description: Adds custom error messages to GravityForms inputs
  * Version: 1.0.0
- * Author: Zbyněk Nedoma
+ * Author: Zbynek Nedoma
  * Author URI: https://domaneni.cz/
  * License: GPL 3
  * Plugin Slug: gfcem
@@ -45,6 +45,7 @@ if (!class_exists('GravityFormsCustomErrorMessages')) {
 				self::$instance->setup_constants();
 				self::$instance->includes();
                 self::$instance->support();
+                self::$instance->enqueue_scripts();
 			}
 
 			return self::$instance;
@@ -100,7 +101,6 @@ if (!class_exists('GravityFormsCustomErrorMessages')) {
 		 * @return void
 		 */
 		private function includes() {
-			require_once GFCEM_PLUGIN_PATH . '/inc/gfcem-enqueue-scripts.php';
 			require_once GFCEM_PLUGIN_PATH . '/inc/gfcem-setting-fields.php';
 			require_once GFCEM_PLUGIN_PATH . '/inc/gfcem-validation.php';
 		}
@@ -113,6 +113,21 @@ if (!class_exists('GravityFormsCustomErrorMessages')) {
 
                 return array_merge( $actions, $custom_links );
             }, 10, 1);
+        }
+
+        private function enqueue_scripts() {
+            add_action('gform_editor_js', function () {
+                wp_enqueue_script('gfcem_gform_editor_js', GFCEM_PLUGIN_URL . '/assets/gfcem-gform-editor.js', ['jquery'], GFCEM_VERSION);
+                wp_localize_script('gfcem_gform_editor_js', 'gfcem_object', [
+                    'gfcem_settings' => apply_filters('gfcem_settings_fields', ['text', 'phone', 'number', 'email', 'textarea', 'radio', 'select', 'checkbox', 'name', 'date', 'time', 'address', 'website',
+                        'file', 'list', 'multiselect', 'consent']),
+                    'gfcem_not_unique' => apply_filters('gfcem_not_unique_fields', ['checkbox', 'name', 'address', 'file', 'list', 'multiselect', 'consent']),
+                    'gfcem_rem_title' => __('Required error message', 'gfcem'),
+                    'gfcem_uem_title' => __('Unique error message', 'gfcem'),
+                    'gfcem_evem_title' => __('Email validation error message', 'gfcem'),
+                ]);
+                wp_enqueue_style('gfcem_gform_editor_css', GFCEM_PLUGIN_URL . '/assets/gfcem-style.css', [], GFCEM_VERSION);
+            });
         }
 	}
 }
