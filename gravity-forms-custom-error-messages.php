@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: Gravity Forms - Custom Error Messages
+ * Plugin Name: GravityForms - Custom Error Messages
  * Plugin URI: https://domaneni.cz/gfcem
  * Description: Adds custom error messages to GravityForms inputs
  * Version: 1.0.0
  * Author: Zbyněk Nedoma
  * Author URI: https://domaneni.cz/
- * License: A "Slug" license name e.g. GPL12
+ * License: GPL 3
  * Plugin Slug: gfcem
  */
 
