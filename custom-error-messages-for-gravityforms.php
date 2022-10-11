@@ -3,7 +3,7 @@
  * Plugin Name: Custom Error Messages for GravityForms
  * Plugin URI: https://domaneni.cz/gfcem
  * Description: Adds custom error messages to GravityForms inputs
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Zbynek Nedoma
  * Author URI: https://domaneni.cz/
  * License: GPL 3
@@ -81,7 +81,7 @@ if (!class_exists('GravityFormsCustomErrorMessages')) {
 
 		private function setup_constants() {
 			define('GFCEM_SLUG', 'gfcem');
-			define('GFCEM_VERSION', '1.0.0');
+			define('GFCEM_VERSION', '1.0.1');
 			// Plugin Root File.
 			if (!defined('GFCEM_PLUGIN_FILE')) {
 				define('GFCEM_PLUGIN_FILE', __FILE__);

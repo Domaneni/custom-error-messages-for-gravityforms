@@ -2,8 +2,8 @@
 Contributors: domaneni
 Donate link: https://ko-fi.com/domaneni
 Tags: gravityforms, gravity forms, custom, error, error message
-Tested up to: 6.0.1
-Stable Tag: 1.0.0
+Tested up to: 6.0.2
+Stable Tag: 1.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -39,3 +39,7 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 1.0.1 2022-10-11 =
+
+* Fix - Fixed checkbox input required validation
