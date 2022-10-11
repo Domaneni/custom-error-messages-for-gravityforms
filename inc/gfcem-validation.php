@@ -9,8 +9,22 @@ add_filter('gform_field_validation', function ($result, $value, $form, $field) {
         return $result;
     }
 
-    if ($field->isRequired && empty($value) && isset($field['inputGFCEMMessageRequired'])) {
-        $result['message'] = $field->inputGFCEMMessageRequired;
+    if ($field->isRequired && isset($field['inputGFCEMMessageRequired'])) {
+        if ('checkbox' === $field->type) {
+            $all_empty = true;
+            foreach ($value as $key => $val) {
+                if (!empty($val)) {
+                    $all_empty = false;
+                    break;
+                }
+            }
+
+            if ($all_empty) {
+                $result['message'] = $field->inputGFCEMMessageRequired;
+            }
+        } else if (empty($value)) {
+            $result['message'] = $field->inputGFCEMMessageRequired;
+        }
         return $result;
     }
 
