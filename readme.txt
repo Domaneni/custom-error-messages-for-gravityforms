@@ -2,8 +2,8 @@
 Contributors: domaneni
 Donate link: https://ko-fi.com/domaneni
 Tags: gravityforms, gravity forms, custom, error, error message
-Tested up to: 6.0.2
-Stable Tag: 1.0.1
+Tested up to: 6.2.2
+Stable Tag: 1.0.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -39,6 +39,12 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 1.0.2 2023-05-23 =
+
+* Tested - Gravity forms version 2.7.6
+* New - Email confirmation error message
+* Fix - Email validation
 
 = 1.0.1 2022-10-11 =
 
