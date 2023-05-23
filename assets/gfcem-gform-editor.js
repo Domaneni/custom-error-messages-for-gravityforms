@@ -14,6 +14,7 @@ jQuery(document).on("gform_load_field_settings", function(event, field, form){
 
     jQuery('#field_gfcem_message_required').val(rgar(field, 'inputGFCEMMessageRequired'));
     jQuery('#field_gfcem_message_valid_email').val(rgar(field, 'inputGFCEMMessageValidEmail'));
+    jQuery('#field_gfcem_message_confirm_email').val(rgar(field, 'inputGFCEMMessageConfirmEmail'));
     jQuery('#field_gfcem_message_unique').val(rgar(field, 'inputGFCEMMessageUnique'));
 }).on('input propertychange change', '.gfcem_input', function(){
     GFCEMSetInput(this.value, jQuery(this).data('key'));
@@ -22,7 +23,7 @@ jQuery(document).on("gform_load_field_settings", function(event, field, form){
 function GFCEMSetInput(value, key){
     var field = GetSelectedField();
 
-    if(value) {
+    if (value) {
         value = value.trim();
     }
 
@@ -31,10 +32,9 @@ function GFCEMSetInput(value, key){
 
 
 function GFCEMToggleInputs(){
-    if(jQuery('#field_gfcemAllowed').is(":checked")){
+    if (jQuery('#field_gfcemAllowed').is(":checked")) {
         jQuery('#field_gfcem_container').show();
-    }
-    else{
+    } else {
         jQuery('#field_gfcem_container').hide();
         jQuery("#field_gfcem_container input").val("");
     }
@@ -52,6 +52,9 @@ function GFCEMCreateInputs(field) {
     if ('email' === field['type']) {
         field_str += "<div class='gfcem-input-row'><label for='field_gfcem_message_valid_email'>" + gfcem_object.gfcem_evem_title + "</label>";
         field_str += "<input type='text' id='field_gfcem_message_valid_email' class='gfcem_input' data-key='inputGFCEMMessageValidEmail' /></div>";
+
+        field_str += "<div class='gfcem-input-row'><label for='field_gfcem_message_confirm_email'>" + gfcem_object.gfcem_ecem_title + "</label>";
+        field_str += "<input type='text' id='field_gfcem_message_confirm_email' class='gfcem_input' data-key='inputGFCEMMessageConfirmEmail' /></div>";
     }
 
     jQuery("#field_gfcem_container").html(field_str);

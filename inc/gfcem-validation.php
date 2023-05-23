@@ -4,6 +4,9 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
+/**
+ * Validate required field option
+ */
 add_filter('gform_field_validation', function ($result, $value, $form, $field) {
     if (!isset($field['gfcemAllowed']) || !$field->gfcemAllowed) {
         return $result;
@@ -28,13 +31,36 @@ add_filter('gform_field_validation', function ($result, $value, $form, $field) {
         return $result;
     }
 
-    if (('email' === $field->type) && !is_email($value) && isset($field['inputGFCEMMessageValidEmail'])) {
-        $result['message'] = $field->inputGFCEMMessageValidEmail;
+    return $result;
+}, 10, 4);
+
+/**
+ * Validate email field
+ */
+add_filter('gform_field_validation', function ($result, $value, $form, $field) {
+    if (!isset($field['gfcemAllowed']) || !$field->gfcemAllowed) {
         return $result;
     }
 
+    if ('email' === $field->type) {
+        $email = is_array( $value ) ? rgar( $value, 0 ) : $value;
+
+        if (!is_email(trim($email)) && isset($field['inputGFCEMMessageValidEmail'])) {
+            $result['message'] = $field->inputGFCEMMessageValidEmail;
+            return $result;
+        }
+
+        if ($field->emailConfirmEnabled && !empty($email) && isset($field['inputGFCEMMessageConfirmEmail']) ) {
+            $confirm = is_array($email) ? rgar($email, 1) : $field->get_input_value_submission('input_' . $field->id . '_2');
+            if ($confirm != $email) {
+                $result['message'] = $field->inputGFCEMMessageConfirmEmail;
+                return $result;
+            }
+        }
+    }
+
     return $result;
-}, 10, 4);
+}, 10, 5);
 
 add_filter('gform_duplicate_message', function ($message, $form, $field, $value) {
     if (isset($field['gfcemAllowed']) && $field->gfcemAllowed && !empty($field['inputGFCEMMessageUnique'])) {
