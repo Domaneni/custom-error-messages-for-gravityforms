@@ -3,11 +3,14 @@
  * Plugin Name: Custom Error Messages for Gravity Forms
  * Plugin URI: https://domaneni.cz/gfcem
  * Description: Adds custom error messages to Gravity Forms inputs
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: Zbynek Nedoma
  * Author URI: https://domaneni.cz/
  * License: GPL 3
  * Plugin Slug: gfcem
+ *
+ * Text Domain: gfcem
+ * Domain Path: languages
  */
 
 
@@ -43,6 +46,7 @@ if (!class_exists('GravityFormsCustomErrorMessages')) {
 			if (!isset(self::$instance) && !(self::$instance instanceof GravityFormsCustomErrorMessages)) {
 				self::$instance = new GravityFormsCustomErrorMessages;
 				self::$instance->setup_constants();
+				self::$instance->init();
 				self::$instance->includes();
                 self::$instance->support();
                 self::$instance->enqueue_scripts();
@@ -81,7 +85,7 @@ if (!class_exists('GravityFormsCustomErrorMessages')) {
 
 		private function setup_constants() {
 			define('GFCEM_SLUG', 'gfcem');
-			define('GFCEM_VERSION', '1.0.2');
+			define('GFCEM_VERSION', '1.0.3');
 			// Plugin Root File.
 			if (!defined('GFCEM_PLUGIN_FILE')) {
 				define('GFCEM_PLUGIN_FILE', __FILE__);
@@ -105,16 +109,41 @@ if (!class_exists('GravityFormsCustomErrorMessages')) {
 			require_once GFCEM_PLUGIN_PATH . '/inc/gfcem-validation.php';
 		}
 
+
+		/**
+         * Load actions
+         *
+         * @access private
+         * @return void
+		 */
+		private function init() {
+            add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 99 );
+		}
+
+        /**
+         * Add support link to plugin page
+         *
+         * @access private
+         * @since 1.0.0
+         * @return void
+         */
         private function support() {
             add_filter('plugin_action_links_' . GFCEM_PLUGIN_BASENAME, function  ($actions) {
                 $custom_links = [
-                    'support' => '<a href="https://ko-fi.com/domaneni" target="_blank">Support</a>',
+                    'support' => '<a href="https://ko-fi.com/domaneni" target="_blank">' . esc_html__('Support', 'gfcem') . '</a>',
                 ];
 
                 return array_merge( $actions, $custom_links );
             }, 10, 1);
         }
 
+        /**
+         * Loads Gravity Forms editor scripts
+         *
+         * @access private
+         * @since 1.0.0
+         * @return void
+         */
         private function enqueue_scripts() {
             add_action('gform_editor_js', function () {
                 wp_enqueue_script('gfcem_gform_editor_js', GFCEM_PLUGIN_URL . '/assets/gfcem-gform-editor.js', ['jquery'], GFCEM_VERSION);
@@ -129,6 +158,17 @@ if (!class_exists('GravityFormsCustomErrorMessages')) {
                 ]);
                 wp_enqueue_style('gfcem_gform_editor_css', GFCEM_PLUGIN_URL . '/assets/gfcem-style.css', [], GFCEM_VERSION);
             });
+        }
+
+        /**
+         * Loads the plugin language files.
+         *
+         * @access public
+         * @since 1.0.3
+         * @return void
+         */
+        public function load_textdomain() {
+            load_plugin_textdomain( 'gfcem', false, dirname( plugin_basename( GFCEM_PLUGIN_DIR ) ) . '/languages/' );
         }
 	}
 }

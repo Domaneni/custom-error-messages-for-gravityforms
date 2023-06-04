@@ -3,7 +3,7 @@ Contributors: domaneni
 Donate link: https://ko-fi.com/domaneni
 Tags: gravityforms, gravity forms, custom, error, error message
 Tested up to: 6.2.2
-Stable Tag: 1.0.2
+Stable Tag: 1.0.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -39,6 +39,12 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 1.0.3 2023-06-04 =
+
+* Tested - Gravity forms version 2.7.7.1
+* New - Translation support
+* Fix - Fixed Gravity Forms name bug
 
 = 1.0.2 2023-05-23 =
 
