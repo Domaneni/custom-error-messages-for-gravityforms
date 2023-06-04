@@ -1,4 +1,4 @@
-=== Custom Error Messages for GravityForms ===
+=== Custom Error Messages for Gravity Forms ===
 Contributors: domaneni
 Donate link: https://ko-fi.com/domaneni
 Tags: gravityforms, gravity forms, custom, error, error message
@@ -7,10 +7,10 @@ Stable Tag: 1.0.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Adds custom error messages to GravityForms inputs
+Adds custom error messages to Gravity Forms inputs
 
 == Description ==
-This plugin allows you to set custom error messages for GravityForms inputs. We support messages for Required, Unique and Email Validation errors.
+This plugin allows you to set custom error messages for Gravity Forms inputs. We support messages for Required, Unique and Email Validation errors.
 
 = Links =
 * [Website](https://domaneni.cz/gfcem/)
@@ -26,9 +26,9 @@ From your WordPress dashboard
 
 == Frequently Asked Questions ==
 
-= Do I need GravityForms plugin? =
+= Do I need Gravity Forms plugin? =
 
-**YES** GravityForms plugin is necessary for running this plugin
+**YES** Gravity Forms plugin is necessary for running this plugin
 
 
 == Screenshots ==
