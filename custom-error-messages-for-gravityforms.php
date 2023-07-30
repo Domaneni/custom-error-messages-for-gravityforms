@@ -105,6 +105,7 @@ if (!class_exists('GravityFormsCustomErrorMessages')) {
 		 * @return void
 		 */
 		private function includes() {
+			require_once GFCEM_PLUGIN_PATH . '/inc/gfcem-form-setting.php';
 			require_once GFCEM_PLUGIN_PATH . '/inc/gfcem-setting-fields.php';
 			require_once GFCEM_PLUGIN_PATH . '/inc/gfcem-validation.php';
 		}
