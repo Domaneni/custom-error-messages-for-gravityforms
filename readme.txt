@@ -3,7 +3,7 @@ Contributors: domaneni
 Donate link: https://ko-fi.com/domaneni
 Tags: gravityforms, gravity forms, custom, error, error message
 Tested up to: 6.2.2
-Stable Tag: 1.0.4
+Stable Tag: 1.0.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -24,6 +24,16 @@ From your WordPress dashboard
 2. **Search** for "Custom Error Messages for GravityForms"
 3. **Activate** Custom Error Messages from your Plugins page
 
+== Documentation ==
+
+= How to use form global settings =
+
+In the settings of each form, you will find the **Custom Error Message** section. Here you can enable them for the entire form and set the default messages to be used for supported fields.
+
+= How to use form field settings =
+
+Use this option if you need to set a custom error message only for a specific field or to override the default message. Go to the **Advanced** Field Settings tab and you will find the **Allow custom error messages** checkbox. Once enabled, you can set a custom message for this field.
+
 == Frequently Asked Questions ==
 
 = Do I need Gravity Forms plugin? =
@@ -39,6 +49,10 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 1.0.5 2023-08-02 =
+
+* New - Default error messages in form settings
 
 = 1.0.4 2023-06-04 =
 
