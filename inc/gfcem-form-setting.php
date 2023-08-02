@@ -8,13 +8,13 @@ add_filter( 'gform_form_settings_fields', function ( $fields, $form ) {
 
     $fields['gfcem'] = [];
     $fields['gfcem']['title'] = __('Custom Error Messages', 'custom-error-messages-for-gravityforms');
-    $fields['gfcem']['description'] = '';
 
     $fields['gfcem']['fields'] = [
         [
             'type' => 'toggle',
             'name' => 'gfcem_default_enabled',
-            'label' => __('Enable Custom Error Message', 'custom-error-messages-for-gravityforms')
+            'label' => __('Enable Custom Error Message', 'custom-error-messages-for-gravityforms'),
+            'description' => __('Enable custom error messages for all supported fields', 'custom-error-messages-for-gravityforms'),
         ],
         [
             'type' => 'text',
