@@ -2,8 +2,8 @@
 Contributors: domaneni
 Donate link: https://ko-fi.com/domaneni
 Tags: gravityforms, gravity forms, custom, error, error message
-Tested up to: 6.2.2
-Stable Tag: 1.0.5
+Tested up to: 6.3.2
+Stable Tag: 1.0.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,6 +49,12 @@ Use this option if you need to set a custom error message only for a specific fi
 
 
 == Changelog ==
+
+= 1.0.6 2023-10-15 =
+
+* Tested - Gravity forms version 2.7.15.1
+* Update - Partial change jQuery to javascript
+* New - Load minimised assets version 
 
 = 1.0.5 2023-08-02 =
 

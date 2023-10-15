@@ -3,7 +3,7 @@
  * Plugin Name: Custom Error Messages for Gravity Forms
  * Plugin URI: https://domaneni.cz/gfcem
  * Description: Adds custom error messages to Gravity Forms inputs
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: Zbynek Nedoma
  * Author URI: https://domaneni.cz/
  * License: GPL 3
@@ -147,7 +147,10 @@ if (!class_exists('GravityFormsCustomErrorMessages')) {
          */
         private function enqueue_scripts() {
             add_action('gform_editor_js', function () {
-                wp_enqueue_script('gfcem_gform_editor_js', GFCEM_PLUGIN_URL . '/assets/gfcem-gform-editor.js', ['jquery'], GFCEM_VERSION);
+				$debug = (defined( 'SCRIPT_DEBUG' ) && (true === SCRIPT_DEBUG)) || 
+				(isset( $_GET['script_debug'])) ? '' : '.min';
+
+                wp_enqueue_script('gfcem_gform_editor_js', GFCEM_PLUGIN_URL . '/assets/gfcem-gform-editor' . $debug . '.js', ['jquery'], GFCEM_VERSION);
                 wp_localize_script('gfcem_gform_editor_js', 'gfcem_object', [
                     'gfcem_settings' => apply_filters('gfcem_settings_fields', ['text', 'phone', 'number', 'email', 'textarea', 'radio', 'select', 'checkbox', 'name', 'date', 'time', 'address', 'website',
                         'file', 'list', 'multiselect', 'consent']),
@@ -157,7 +160,7 @@ if (!class_exists('GravityFormsCustomErrorMessages')) {
                     'gfcem_evem_title' => __('Email validation error message', 'custom-error-messages-for-gravityforms'),
                     'gfcem_ecem_title' => __('Email confirmation error message', 'custom-error-messages-for-gravityforms'),
                 ]);
-                wp_enqueue_style('gfcem_gform_editor_css', GFCEM_PLUGIN_URL . '/assets/gfcem-style.css', [], GFCEM_VERSION);
+                wp_enqueue_style('gfcem_gform_editor_css', GFCEM_PLUGIN_URL . '/assets/gfcem-style' . $debug . '.css', [], GFCEM_VERSION);
             });
         }
 
